@@ -32,4 +32,7 @@ My eventual goal will be to create a full-stack web application called â€œWTWRâ€
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Link to my project](https://anhbahumg.github.io/se_project_react/)
 
-![Alt]![image](https://github.com/AnhBaHumg/se_project_react/assets/139722552/20b82db6-9e6f-451e-893b-f74b3eecc0b1)
+![FrontPage](https://github.com/AnhBaHumg/se_project_react/assets/139722552/fe16324f-09e9-4bea-b58a-ab3d305588a0)
+![image](https://github.com/AnhBaHumg/se_project_react/assets/139722552/20b82db6-9e6f-451e-893b-f74b3eecc0b1)
+![AddNewClothes](https://github.com/AnhBaHumg/se_project_react/assets/139722552/5ddbc3fe-69e5-4677-939c-50cd34b564f3)
+
