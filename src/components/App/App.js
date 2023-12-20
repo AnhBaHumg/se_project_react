@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Footer from "../Footer/Footer.js";
+import Footer from "../footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalwithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
