@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalwithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
@@ -12,7 +12,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [weatherType, setWeatherType] = useState("");
-  const [days, isDay] = useState(true);
+  const [isDay, setIsDay] = useState(true);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -33,9 +33,9 @@ function App() {
         const tempature = parseWeatherData(data);
         setWeatherType(data.weather[0].main.toLowerCase());
         if (data?.sys.sunset < data?.sys.sunrise) {
-          isDay(true);
+          setIsDay(true);
         } else {
-          isDay(false);
+          setIsDay(false);
         }
         setTemp(tempature);
       })
@@ -51,7 +51,7 @@ function App() {
         weatherTemp={temp}
         weatherType={weatherType}
         onSelectCard={handleSelectedCard}
-        day={days}
+        day={isDay}
       />
       <Footer />
       {activeModal === "create" && (

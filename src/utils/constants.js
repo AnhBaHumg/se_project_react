@@ -1,3 +1,33 @@
+import daySunny from "../images/Day/Sunny.svg";
+import dayClody from "../images/Day/Cloudy.svg";
+import dayRainy from "../images/Day/Rainy.svg";
+import daySnowy from "../images/Day/Snowy.svg";
+import dayStormy from "../images/Day/Stormy.svg";
+import dayFogy from "../images/Day/Fogy.svg";
+
+import nightMoon from "../images/Night/Moon.svg";
+import nightCloud from "../images/Night/cloud.svg";
+import nightRain from "../images/Night/Rain.svg";
+import nightSnow from "../images/Night/Snow.svg";
+import nightStorm from "../images/Night/Storm.svg";
+import nightFog from "../images/Night/Fog.svg";
+
+export const weatherOptions = [
+  { url: daySunny, day: true, type: "sunny" },
+  { url: dayClody, day: true, type: "cloudy" },
+  { url: dayRainy, type: true, type: "rainy" },
+  { url: daySnowy, day: true, type: "snowy" },
+  { url: dayStormy, day: true, type: "stormy" },  
+  { url: dayFogy, day: true, type: "fogy" },
+
+  { url: nightMoon, day: false, type: "moon" },
+  { url: nightCloud, day: false, type: "cloud" },  
+  { url: nightRain, day: false, type: "rain" },  
+  { url: nightSnow, day: false, type: "snow" },
+  { url: nightStorm, day: false, type: "storm" },  
+  { url: nightFog, day: false, type: "fog" },
+];
+
 export const defaultClothingItems = [
   {
     _id: 0,
@@ -36,3 +66,5 @@ export const defaultClothingItems = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Coat.png?etag=298717ed89d5e40b1954a1831ae0bdd4",
   },
 ];
+
+
