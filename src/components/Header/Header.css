@@ -1,0 +1,52 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+  margin-top: 32px;
+  padding: 0 40px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__avatar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.header__button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header__name {
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0 12px 0 20px;
+}
+
+.header__date {
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
