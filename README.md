@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# The project: WTWR (What to Wear?)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Intro
 
-## Available Scripts
+- React App: It was developed by Facebook, the creators of React, and we can use it to quickly get a project up and running by generating it from a standard pre-built template. 
+- React Hooks: There are two main hooks to know about: useState() and useEffect(). These give our functional components the power of class components, which are internal state and side effects.
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+In this project, I’ll create and style the components that make up the front end of the "WTWR" app. I will also begin to build the functionality of the app. Here is an overview of the features I will implement by the end of this project iteration:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
++ A set of clothing cards generated from a hard-coded array of data. This data can be found in Section 5 below.
++ A call to the weather API when a user visits the site. The response will be parsed, and the current temperature and location name will be saved as a React state. Information on how to interact with the weather API can be found in Section 4 below.
++ The current location, shown in the header. This location will be based on the coordinates that I choose in Section 4.
++ The current temperature (in Fahrenheit for now), set in the weather card.
++ This temperature will be used to filter the cards that are shown to the user.
++ The new garment modal can be opened and closed.
++ The image modal will appear when a card is clicked.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## About the project
 
-### `npm test`
+The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+My eventual goal will be to create a full-stack web application called “WTWR”. This application will read weather data from a Weather API and then recommend suitable clothing to the user based on that data. In this project, my objective is to create a front end for the application using the fundamental principles of React.
 
-### `npm run build`
+## Pics
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![FrontPage](https://github.com/AnhBaHumg/se_project_react/assets/139722552/fe16324f-09e9-4bea-b58a-ab3d305588a0)
+![image](https://github.com/AnhBaHumg/se_project_react/assets/139722552/20b82db6-9e6f-451e-893b-f74b3eecc0b1)
+![AddNewClothes](https://github.com/AnhBaHumg/se_project_react/assets/139722552/5ddbc3fe-69e5-4677-939c-50cd34b564f3)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Links
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
+- [Link to my project](https://anhbahumg.github.io/se_project_react/)
