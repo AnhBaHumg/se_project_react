@@ -12,6 +12,10 @@ import nightSnow from "../images/Night/Snow.svg";
 import nightStorm from "../images/Night/Storm.svg";
 import nightFog from "../images/Night/Fog.svg";
 
+export const latitude = 29.76;
+export const longitude = -95.36;
+export const APIkey = "2a0adacad2563681c1e9fa6ef98e236e";
+
 export const weatherOptions = [
   { url: daySunny, day: true, type: "sunny" },
   { url: dayClody, day: true, type: "cloudy" },

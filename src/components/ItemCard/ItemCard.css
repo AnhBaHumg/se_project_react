@@ -44,3 +44,11 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+.card {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  height: 328px;
+}

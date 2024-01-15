@@ -1,35 +1,45 @@
+import { Link } from "react-router-dom";
 import "./Header.css";
-import avatarImage from "../../images/avatar.svg"
-import logoImg from "../../images/Logo.svg";
+import headerlogo from "../../images/Logo.svg";
+import avatar from "../../images/avatar.svg";
+import { parseWeatherData } from "../../utils/weatherApi";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-
-
-const Header = ({ onCreateModal}) => {
+const Header = ({ weatherCity, onCreateModal }) => {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+  const username = "Terrence Tegegne";
+
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={logoImg} alt="Logo" />
+          <Link to="/">
+            <img src={headerlogo} alt="logo" />
+          </Link>
         </div>
-        <p className="header__date">{currentDate}, TX</p>
+        <div>
+          {currentDate}, {weatherCity}
+        </div>
       </div>
       <div className="header__avatar-logo">
+        <ToggleSwitch />
         <div>
           <button
-            type="text"
             className="header__button"
+            type="text"
             onClick={onCreateModal}
           >
-            +Add Clothes
+            + Add Clothes
           </button>
         </div>
-        <p className="header__name">Terrence Tegegne</p>
+        <Link className="header__username" to="/profile">
+          {username}
+        </Link>
         <div>
-          <img src={avatarImage} alt="avatar" />
+          <img src={avatar} alt={`avatar of ${username}`} />
         </div>
       </div>
     </header>

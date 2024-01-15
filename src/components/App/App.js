@@ -1,11 +1,16 @@
-import "./App.css";
 import Header from "../Header/Header";
+import "./App.css";
+import "../footer/Footer.css";
 import Main from "../Main/Main";
 import Footer from "../footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalwithForm";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import CurrentTempatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { Switch, Route } from "react-router-dom";
+import AddItemModal from "../AddItemModal/AddItemModal";
+import { deleteItems, getItems, postItems } from "../../utils/api";
+import Profile from "../Profile/Profile";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -13,6 +18,8 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [weatherType, setWeatherType] = useState("");
   const [isDay, setIsDay] = useState(true);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -27,17 +34,44 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleToggleSwitchChange = () => {
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
+
+  const handleDeleteCard = (card) => {
+    deleteItems(card.id).then(() => {
+      const itemList = clothingItems.filter((item) => {
+        return item.id !== card.id;
+      });
+      setClothingItems(itemList);
+    });
+  };
+
+  const onAddItem = (values) => {
+    postItems(values).then((res) => {
+      setClothingItems([res, ...clothingItems]);
+    });
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
         const tempature = parseWeatherData(data);
+        const date = new Date();
         setWeatherType(data.weather[0].main.toLowerCase());
-        if (data?.sys.sunset < data?.sys.sunrise) {
+        if (
+          data?.sys.sunrise * 1000 < date.getTime() &&
+          data?.sys.sunset * 1000 > date.getTime()
+        ) {
           setIsDay(true);
         } else {
           setIsDay(false);
         }
         setTemp(tempature);
+        getItems().then((res) => {
+          setClothingItems(res);
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -46,83 +80,47 @@ function App() {
 
   return (
     <div>
-      <Header onCreateModal={handleCreateModal} />
-      <Main
-        weatherTemp={temp}
-        weatherType={weatherType}
-        onSelectCard={handleSelectedCard}
-        day={isDay}
-      />
-      <Footer />
-      {activeModal === "create" && (
-        <ModalWithForm
-          title="New gardment"
-          buttontext="Add garment"
-          onClose={handleCloseModal}
-        >
-          <label className="modal__label">
-            Name
-            <input
-              type="text"
-              name="name"
-              className="modal__input"
-              placeholder="Name"
+      <CurrentTempatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <Header onCreateModal={handleCreateModal} />
+        <Switch>
+          <Route exact path="/">
+            <Main
+              weatherTemp={temp}
+              weatherType={weatherType}
+              onSelectCard={handleSelectedCard}
+              day={isDay}
+              clothingItems={clothingItems}
             />
-          </label>
-          <label className="modal__label">
-            Image
-            <input
-              type="url"
-              name="link"
-              className="modal__input"
-              placeholder="Image URL"
+          </Route>
+          <Route path="/profile">
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+              onCreateModal={handleCreateModal}
             />
-          </label>
-          <p className="weather__group">Select the weather type</p>
-          <ul className="weather__list">
-            <li className="weather__type">
-              <input
-                type="radio"
-                id="hot"
-                value="hot"
-                name="weather"
-                className="radio__dot"
-              />
-              <label className="weather__name" htmlFor="hot">
-                Hot
-              </label>
-            </li>
-            <li className="weather__type">
-              <input
-                type="radio"
-                id="warm"
-                value="warm"
-                name="weather"
-                className="radio__dot"
-              />
-              <label className="weather__name" htmlFor="warm">
-                Warm
-              </label>
-            </li>
-            <li className="weather__type">
-              <input
-                type="radio"
-                id="cold"
-                value="cold"
-                name="weather"
-                className="radio__dot"
-              />
-              <label className="weather__name" htmlFor="cold">
-                Cold
-              </label>
-            </li>
-          </ul>
-        </ModalWithForm>
-      )}
+          </Route>
+        </Switch>
+        <Footer />
+        {activeModal === "create" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            onAddItem={onAddItem}
+          />
+        )}
 
-      {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-      )}
+        {activeModal === "preview" && (
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            handleDeleteCard={() => {
+              handleDeleteCard(selectedCard);
+            }}
+          />
+        )}
+      </CurrentTempatureUnitContext.Provider>
     </div>
   );
 }
