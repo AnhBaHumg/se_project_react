@@ -5,7 +5,11 @@ import Main from "../Main/Main";
 import Footer from "../footer/Footer";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
-import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import {
+  getForecastWeather,
+  parseWeatherData,
+  parseCityData,
+} from "../../utils/weatherApi";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { Switch, Route } from "react-router-dom";
 import AddItemModal from "../AddItemModal/AddItemModal";
@@ -21,7 +25,8 @@ function App() {
   const [isDay, setIsDay] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [deleteCard, setDeleteCard] = useState(false);
+  const [setDeleteCard] = useState(false);
+  const [city, setCity] = useState("");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -34,6 +39,10 @@ function App() {
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
+  };
+
+  const handleOpenConfirmationModal = () => {
+    setActiveModal("delete");
   };
 
   const handleCloseConfirmModal = () => {
@@ -80,6 +89,16 @@ function App() {
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+        setCity(parseCityData(data));
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getForecastWeather()
+      .then((data) => {
         const tempature = parseWeatherData(data);
         const date = new Date();
         setWeatherType(data.weather[0].main.toLowerCase());
@@ -96,8 +115,8 @@ function App() {
           setClothingItems(res);
         });
       })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
+        console.error();
       });
   }, []);
 
@@ -106,7 +125,11 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <Header onCreateModal={handleCreateModal} />
+        <Header
+          onCreateModal={handleCreateModal}
+          temp={temp}
+          weatherCity={city}
+        />
         <Switch>
           <Route exact path="/">
             <Main

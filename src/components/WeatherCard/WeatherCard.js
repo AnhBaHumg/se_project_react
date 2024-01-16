@@ -1,11 +1,11 @@
 import "./WeatherCard.css";
 import { weatherOptions } from "../../utils/constants";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import { useContext } from "react";
+import React, { useContext } from "react";
 
 const WeatherCard = ({ day, type, temperatureString }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const weatherOption = weatherOptions.find((item) => {
+  const weatherOption = weatherOptions.filter((item) => {
     return item.day === day && item.type === type;
   });
   console.log(temperatureString, currentTemperatureUnit);

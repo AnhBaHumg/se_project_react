@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import headerlogo from "../../images/Logo.svg";
 import avatar from "../../images/avatar.svg";
-import { parseWeatherData } from "../../utils/weatherApi";
+// import { parseWeatherData } from "../../utils/weatherApi";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const Header = ({ weatherCity, onCreateModal }) => {
