@@ -41,10 +41,6 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleOpenConfirmationModal = () => {
-    setActiveModal("delete");
-  };
-
   const handleCloseConfirmModal = () => {
     setActiveModal("");
   };
@@ -115,8 +111,8 @@ function App() {
           setClothingItems(res);
         });
       })
-      .catch(() => {
-        console.error();
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 

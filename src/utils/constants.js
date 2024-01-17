@@ -1,35 +1,21 @@
-import daySunny from "../images/Day/Sunny.svg";
-import dayClody from "../images/Day/Cloudy.svg";
-import dayRainy from "../images/Day/Rainy.svg";
-import daySnowy from "../images/Day/Snowy.svg";
-import dayStormy from "../images/Day/Stormy.svg";
-import dayFogy from "../images/Day/Fogy.svg";
-
-import nightMoon from "../images/Night/Moon.svg";
-import nightCloud from "../images/Night/cloud.svg";
-import nightRain from "../images/Night/Rain.svg";
-import nightSnow from "../images/Night/Snow.svg";
-import nightStorm from "../images/Night/Storm.svg";
-import nightFog from "../images/Night/Fog.svg";
-
 export const latitude = 29.76;
 export const longitude = -95.36;
 export const APIkey = "2a0adacad2563681c1e9fa6ef98e236e";
 
 export const weatherOptions = [
-  { url: daySunny, day: true, type: "sunny" },
-  { url: dayClody, day: true, type: "cloudy" },
-  { url: dayRainy, type: true, type: "rainy" },
-  { url: daySnowy, day: true, type: "snowy" },
-  { url: dayStormy, day: true, type: "stormy" },  
-  { url: dayFogy, day: true, type: "fogy" },
+  { url: require("../images/Day/Sunny.svg").default, day: true, type: "sunny" },
+  { url: require("../images/Day/Cloudy.svg").default.default, day: true, type: "cloudy" },
+  { url: require("../images/Day/Rainy.svg").default, type: true, type: "rainy" },
+  { url: require("../images/Day/Snowy.svg").default, day: true, type: "snowy" },
+  { url: require("../images/Day/Stormy.svg").default, day: true, type: "stormy" },  
+  { url: require("../images/Day/Fogy.svg").default, day: true, type: "fogy" },
 
-  { url: nightMoon, day: false, type: "moon" },
-  { url: nightCloud, day: false, type: "cloud" },  
-  { url: nightRain, day: false, type: "rain" },  
-  { url: nightSnow, day: false, type: "snow" },
-  { url: nightStorm, day: false, type: "storm" },  
-  { url: nightFog, day: false, type: "fog" },
+  { url: require("../images/Night/Moon.svg").default, day: false, type: "moon" },
+  { url: require("../images/Night/cloud.svg").default, day: false, type: "cloud" },  
+  { url: require("../images/Night/Rain.svg").default, day: false, type: "rain" },  
+  { url: require("../images/Night/Snow.svg").default, day: false, type: "snow" },
+  { url: require("../images/Night/Storm.svg").default, day: false, type: "storm" },  
+  { url: require("../images/Night/Fog.svg").default, day: false, type: "fog" },
 ];
 
 export const defaultClothingItems = [
