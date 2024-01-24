@@ -5,12 +5,15 @@
   border-radius: 12px;
 }
 
-.weather_info {
+.weather__info {
   position: absolute;
-  top: 20px;
+  top: 15px;
   left: 16px;
-  color: white;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
   font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  color: white;
 }
 
 .weather_image {
@@ -54,4 +57,3 @@
   text-align: left;
   opacity: 0.5;
 }
-

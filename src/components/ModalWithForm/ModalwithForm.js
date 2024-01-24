@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import "./ModalWithForm.css";
+import React from "react";
 
 const ModalWithForm = ({
   children,

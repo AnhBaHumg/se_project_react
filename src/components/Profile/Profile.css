@@ -1,8 +1,9 @@
 .profile {
+  padding-left: 40px;
+  margin-top: 40px;
   display: flex;
-  margin-right: 40px;
-  margin-left: 40px;
-  margin-top: 63px;
+  align-items: flex-start;
+  gap: 116px;
 }
 
 .profile__sidebar {

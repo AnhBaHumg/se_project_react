@@ -27,6 +27,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [setDeleteCard] = useState(false);
   const [city, setCity] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -50,14 +51,18 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const onAddItem = ({ name, imageUrl, weather }) => {
-    postItems({ name, imageUrl, weather })
-      .then((item) => {
-        setClothingItems([item, ...clothingItems]);
+  const onAddItem = (values) => {
+    setIsLoading(true);
+    postItems(values)
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
