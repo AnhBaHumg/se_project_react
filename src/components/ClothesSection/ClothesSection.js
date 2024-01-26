@@ -19,7 +19,7 @@ const ClothesSection = ({ clothingItems, onSelectedCard, onCreateModal }) => {
           <ItemCard
             item={item}
             onSelectedCard={onSelectedCard}
-            key={item._id}
+            key={item.id || item._id}
           />
         ))}
       </div>

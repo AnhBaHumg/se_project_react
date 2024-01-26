@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalwithForm";
 import { useForm } from "../Hooks/useForm";
 
@@ -83,7 +83,7 @@ const AddItemModal = ({ isOpen, onAddItem, handleCloseModal, isLoading }) => {
               type="radio"
               id="cold"
               value="cold"
-              name="option"
+              name="weather"
               onChange={handleChange}
             />
             <span className="weather__name" htmlFor="cold">

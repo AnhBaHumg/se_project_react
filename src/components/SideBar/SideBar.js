@@ -3,7 +3,6 @@ import "./SideBar.css";
 
 const SideBar = () => {
   const username = " Terrence Tegegne";
-  const avatar = "";
   return (
     <div className="sidebar">
       <img

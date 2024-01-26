@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import "./ModalWithForm.css";
 import React from "react";
 
@@ -11,13 +10,7 @@ const ModalWithForm = ({
   isOpen,
   onSubmit,
 }) => {
-  const ref = useRef();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit();
-  };
-
+  
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__content">
@@ -27,12 +20,11 @@ const ModalWithForm = ({
           onClick={onClose}
         ></button>
         <h3 className="modal__title">{title}</h3>
-        <form className="modal__form" onSubmit={handleSubmit}>
+        <form className="modal__form" onSubmit={onSubmit}>
           {children}
           <button
             type="submit"
             className="modal__button modal__button_disabled"
-            disabled
           >
             {buttontext}
           </button>

@@ -3,19 +3,19 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-const Profile = ({ clothingItems, onSelectedCard, onCreateModal }) => {
+const Profile = ({ clothingItems, onSelectCard, onCreateModal }) => {
   return (
     <div className="profile">
-      <div className="profile__sidebar">
+      <section className="profile__sidebar">
         <SideBar />
-      </div>
-      <div>
+      </section>
+      <section>
         <ClothesSection
-          onSelectedCard={onSelectedCard}
+          onSelectCard={onSelectCard}
           onCreateModal={onCreateModal}
           clothingItems={clothingItems}
         />
-      </div>
+      </section>
     </div>
   );
 };

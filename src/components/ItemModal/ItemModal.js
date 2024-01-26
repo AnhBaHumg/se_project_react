@@ -1,8 +1,7 @@
 import "./ItemModal.css";
-import React, { useRef } from "react";
+// import React from "react";
 
 const ItemModal = ({ selectedCard, onClose, handleOpenConfirmationModal }) => {
-  const ref = useRef();
 
   return (
     <div className={`modal`}>

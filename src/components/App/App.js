@@ -25,7 +25,7 @@ function App() {
   const [isDay, setIsDay] = useState(true);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [setDeleteCard] = useState(false);
+  const [deleteCard, setDeleteCard] = useState(false);
   const [city, setCity] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -46,27 +46,26 @@ function App() {
     setActiveModal("");
   };
 
+  const handleOpenConfirmationModal = () => {
+    setActiveModal("delete");
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const onAddItem = (values) => {
-    setIsLoading(true);
-    postItems(values)
-      .then((res) => {
-        setClothingItems([res, ...clothingItems]);
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const onAddItem = async (values) => {
+    try {
+      const res = await postItems(values);
+      setClothingItems((items) => [res, ...items]);
+      handleCloseModal();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleDeleteCard = () => {
+  const handleDeleteItem = () => {
     console.log(selectedCard._id);
     setDeleteCard(true);
     deleteItems(selectedCard._id)
@@ -116,8 +115,8 @@ function App() {
           setClothingItems(res);
         });
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        console.error(err);
       });
   }, []);
 
@@ -162,14 +161,13 @@ function App() {
           <ItemModal
             selectedCard={selectedCard}
             onClose={handleCloseModal}
-            handleDeleteCard={() => {
-              handleDeleteCard(selectedCard);
-            }}
+            onDelete={handleOpenConfirmationModal}
+            handleOpenConfirmationModal={handleOpenConfirmationModal}
           />
         )}
         {activeModal === "delete" && (
           <DeleteConfirmationModal
-            handleDeleteItem={handleDeleteCard}
+            handleDeleteItem={handleDeleteItem}
             handleCloseConfirmModal={handleCloseConfirmModal}
             selectedCard={selectedCard}
           ></DeleteConfirmationModal>
