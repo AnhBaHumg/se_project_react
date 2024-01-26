@@ -1,3 +1,5 @@
+//json-server --watch db.json --id _id --port 3001
+
 import { processServerResponse } from "./utils";
 
 const baseUrl = "http://localhost:3001";

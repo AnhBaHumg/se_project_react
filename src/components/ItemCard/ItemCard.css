@@ -11,9 +11,9 @@
   font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
-  line-height: normal;
-  color: #000;
-  font-style: normal;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .card_image {
@@ -21,8 +21,6 @@
   height: 328px;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  background-image: cover;
-  cursor: pointer;
 }
 
 .card_list {
@@ -37,11 +35,11 @@
   line-height: 20px;
   letter-spacing: 0em;
   text-align: center;
-  position: relative;
-  top: 35px;
+  position: absolute;
+  top: 15px;
   background-color: white;
   border-radius: 5px;
-  padding: 2px 12px;
+  padding: 0x 12px;
   margin: 0 125px;
   max-width: 200px;
   color: rgba(0, 0, 0, 0.6);

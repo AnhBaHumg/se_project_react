@@ -14,8 +14,12 @@
 }
 
 .header__avatar-logo {
+  font-family: "CabinetGrotesk-Bold", Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
+  gap: 24px;
+  line-height: 24px;
+  font-size: 20px;
 }
 
 .header__button {

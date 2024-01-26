@@ -18,7 +18,7 @@ const DeleteConfirmationModal = ({
         <div>Are you sure you want to delete this item?</div>
         <div>This action is irreversible.</div>
         <button
-          className="modal__close-button"
+          className="modal__close"
           type="button"
           onClick={handleCloseConfirmModal}
           alt="close-button"

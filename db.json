@@ -119,6 +119,18 @@
       "imageUrl": "https://capsapparel.com/cdn/shop/products/ASTROBEIGEFRONT.jpg?v=1691999348&width=600",
       "weather": "warm",
       "_id": 19
+    },
+    {
+      "name": "hat",
+      "imageUrl": "https://capsapparel.com/cdn/shop/products/ASTROBEIGEFRONT.jpg?v=1691999348&width=600",
+      "weather": "warm",
+      "_id": 20
+    },
+    {
+      "name": "hat",
+      "imageUrl": "https://capsapparel.com/cdn/shop/products/ASTROBEIGEFRONT.jpg?v=1691999348&width=600",
+      "weather": "cold",
+      "_id": 21
     }
   ]
 }

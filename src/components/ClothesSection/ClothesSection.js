@@ -1,7 +1,7 @@
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 
-const ClothesSection = ({ clothingItems, onSelectedCard, onCreateModal }) => {
+const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
   return (
     <section className="clothes__section" id="clothes-section">
       <div className="clothes__section_name-wrapper">
@@ -18,7 +18,7 @@ const ClothesSection = ({ clothingItems, onSelectedCard, onCreateModal }) => {
         {clothingItems.map((item) => (
           <ItemCard
             item={item}
-            onSelectedCard={onSelectedCard}
+            onSelectCard={onSelectCard}
             key={item.id || item._id}
           />
         ))}
