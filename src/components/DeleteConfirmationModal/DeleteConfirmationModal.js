@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import "../ModalWithForm/ModalWithForm.css";
 
 const DeleteConfirmationModal = ({
@@ -6,15 +5,10 @@ const DeleteConfirmationModal = ({
   handleDeleteItem,
   selectedCard,
 }) => {
-  const ref = useRef();
-
-  const handleCancel = () => {
-    handleCloseModal();
-  };
 
   return (
     <div className="modal">
-      <div className="modal__confirm-content" ref={ref}>
+      <div className="modal__confirm-content" >
         <div>Are you sure you want to delete this item?</div>
         <div>This action is irreversible.</div>
         <button
@@ -34,7 +28,7 @@ const DeleteConfirmationModal = ({
           <button
             className="modal__cancel-button"
             type="button"
-            onClick={handleCancel}
+            onClick={handleCloseModal}
           >
             Cancel
           </button>

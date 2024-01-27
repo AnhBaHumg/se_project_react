@@ -111,10 +111,6 @@
   opacity: 0.6;
 }
 
-.modal__button_disabled {
-  opacity: 0.3;
-}
-
 .modal__close {
   position: absolute;
   top: 20px;

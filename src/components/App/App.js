@@ -1,8 +1,8 @@
 import Header from "../Header/Header";
 import "./App.css";
-import "../footer/Footer.css";
+import "../Footer/Footer.css";
 import Main from "../Main/Main";
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import {
@@ -16,6 +16,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import { deleteItems, getItems, postItems } from "../../utils/api";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
+import React from "react";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -27,7 +28,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [deleteCard, setDeleteCard] = useState(false);
   const [city, setCity] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -36,6 +37,25 @@ function App() {
   const handleCloseModal = () => {
     setActiveModal("");
   };
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") handleCloseModal();
+    };
+    function handleOutsideModalClick(evt) {
+      if (evt.target.classList.contains("modal")) {
+        handleCloseModal();
+      }
+    }
+    document.addEventListener("keydown", handleEscClose);
+    document.addEventListener("click", handleOutsideModalClick);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+      document.removeEventListener("click", handleOutsideModalClick);
+    };
+  }, [activeModal]);
 
   const handleSelectedCard = (card) => {
     setActiveModal("preview");
@@ -52,14 +72,29 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  const onAddItem = async (values) => {
-    try {
-      const res = await postItems(values);
-      setClothingItems((items) => [res, ...items]);
-      handleCloseModal();
-    } catch (err) {
-      console.error(err);
-    }
+  // const onAddItem = async (values) => {
+  //   try {
+  //     const res = await postItems(values);
+  //     setClothingItems((items) => [res, ...items]);
+  //     handleCloseModal();
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  const onAddItem = (values) => {
+    setIsLoading(true);
+    postItems(values)
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleDeleteItem = () => {
@@ -108,7 +143,6 @@ function App() {
   }, []);
 
   return (
-    <div>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -141,6 +175,8 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             onAddItem={onAddItem}
+            isLoading={isLoading}
+            buttonText={isLoading? 'Saving...' : 'Save'}
           />
         )}
 
@@ -160,7 +196,6 @@ function App() {
           ></DeleteConfirmationModal>
         )}
       </CurrentTemperatureUnitContext.Provider>
-    </div>
   );
 }
 
