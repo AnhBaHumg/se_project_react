@@ -2,14 +2,14 @@ import { useRef } from "react";
 import "../ModalWithForm/ModalWithForm.css";
 
 const DeleteConfirmationModal = ({
-  handleCloseConfirmModal,
+  handleCloseModal,
   handleDeleteItem,
   selectedCard,
 }) => {
   const ref = useRef();
 
   const handleCancel = () => {
-    handleCloseConfirmModal();
+    handleCloseModal();
   };
 
   return (
@@ -20,7 +20,7 @@ const DeleteConfirmationModal = ({
         <button
           className="modal__close"
           type="button"
-          onClick={handleCloseConfirmModal}
+          onClick={handleCloseModal}
           alt="close-button"
         ></button>
         <div className="modal__confirm-buttons">

@@ -42,9 +42,6 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleCloseConfirmModal = () => {
-    setActiveModal("");
-  };
 
   const handleOpenConfirmationModal = () => {
     setActiveModal("delete");
@@ -76,7 +73,6 @@ function App() {
 
         setClothingItems(filteredCards);
         handleCloseModal();
-        handleCloseConfirmModal();
       })
       .catch((error) => {
         console.log(error);
@@ -92,14 +88,6 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
         setCity(parseCityData(data));
-      })
-      .catch(console.error);
-  }, []);
-
-  useEffect(() => {
-    getForecastWeather()
-      .then((data) => {
-        const tempature = parseWeatherData(data);
         const date = new Date();
         setWeatherType(data.weather[0].main.toLowerCase());
         if (
@@ -110,7 +98,6 @@ function App() {
         } else {
           setIsDay(false);
         }
-        setTemp(tempature);
         getItems().then((res) => {
           setClothingItems(res);
         });
@@ -168,7 +155,7 @@ function App() {
         {activeModal === "delete" && (
           <DeleteConfirmationModal
             handleDeleteItem={handleDeleteItem}
-            handleCloseConfirmModal={handleCloseConfirmModal}
+            handleCloseModal={handleCloseModal}
             selectedCard={selectedCard}
           ></DeleteConfirmationModal>
         )}
