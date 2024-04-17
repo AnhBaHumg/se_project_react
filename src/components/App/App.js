@@ -148,9 +148,6 @@ function App() {
         } else {
           setIsDay(false);
         }
-        getItems().then((res) => {
-          setClothingItems(res);
-        });
       })
       .catch((err) => {
         console.error(err);
@@ -241,6 +238,29 @@ function App() {
     setLoggedIn(false);
     history.push("/");
   }
+
+  function fetchClothes() {
+    getItems()
+      .then((items) => {
+        setClothingItems(items.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  useEffect(() => {
+    fetchClothes();
+  }, []);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt !== null) {
+      checkTokenSetUser(jwt).catch((e) => {
+        console.error(e);
+      });
+    }
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

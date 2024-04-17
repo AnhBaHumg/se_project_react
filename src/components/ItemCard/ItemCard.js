@@ -5,7 +5,7 @@ import "./ItemCard.css";
 const ItemCard = ({ item, onSelectCard, onCardLike, loggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
   const id = item._id;
-  const isLiked = item.likes?.some((user) => {
+  const isLiked = item.likes.some((user) => {
     return user.includes(currentUser?._id);
   });
   const likeButtonClass = `card__likebutton ${

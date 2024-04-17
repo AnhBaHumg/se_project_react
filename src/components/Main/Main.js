@@ -18,8 +18,8 @@ function Main({
 
   const currentWeatherType = weatherType(temp, currentTemperatureUnit);
 
-  const filteredCards = clothingItems.filter((clothingItem) => {
-    return clothingItem.weather.toLowerCase() === currentWeatherType;
+  const filteredCards = clothingItems.filter((item) => {
+    return item.weather.toLowerCase() === currentWeatherType;
   });
 
   return (
