@@ -33,3 +33,5 @@ My eventual goal will be to create a full-stack web application called â€œWTWRâ€
 
 - [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
 - [Link to my project](https://anhbahumg.github.io/se_project_react/)
+- [Link to se_project_express](https://github.com/AnhBaHumg/se_project_express)
+- Other: https://anhbahumg.github.io/se_project_express/
