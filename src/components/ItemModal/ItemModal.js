@@ -1,7 +1,15 @@
 import "./ItemModal.css";
-// import React from "react";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const ItemModal = ({ selectedCard, onClose, handleOpenConfirmationModal }) => {
+const ItemModal = ({
+  selectedCard,
+  onClose,
+  handleOpenConfirmationModal,
+  isLoading,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = selectedCard.owner === currentUser._id;
 
   return (
     <div className={`modal`}>
@@ -17,17 +25,25 @@ const ItemModal = ({ selectedCard, onClose, handleOpenConfirmationModal }) => {
           alt={selectedCard.name}
         />
         <div className="modal__info">
-          <p className="modal__card-name">{selectedCard.name}</p>
-          <button
-            type="text"
-            className="modal__delete-button"
-            onClick={handleOpenConfirmationModal}
-          >
-            Delete Item
-          </button>
-          <p className="modal__card-weather">
-            Weather type: {selectedCard.weather}
-          </p>
+          <div id="modal-group-divider">
+            <p className="modal__card-name">{selectedCard.name}</p>
+          </div>
+          <div id="preview-group-divider">
+            {isOwn ? (
+              <button
+                type="text"
+                className="modal__delete-button"
+                onClick={handleOpenConfirmationModal}
+              >
+                {isLoading ? "Deleting..." : "Delete item"}
+              </button>
+            ) : (
+              <></>
+            )}
+            <p className="modal__card-weather">
+              Weather type: {selectedCard.weather}
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -14,3 +14,20 @@
   font-weight: 500;
   color: black;
 }
+
+.sidebar__user-options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 8px;
+}
+
+.sidebar__user-button {
+  font-family: "CabinetGrotesk-Bold", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 25px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding: 0;
+}

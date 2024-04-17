@@ -2,7 +2,10 @@
 
 import { processServerResponse } from "./utils";
 
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.raspberryip.com"
+    : "http://localhost:3001";
 
 export const getItems = () => {
   return fetch(`${baseUrl}/items`, {
@@ -12,9 +15,14 @@ export const getItems = () => {
 };
 
 export const postItems = ({ name, imageUrl, weather }) => {
+  const jwt = localStorage.getItem("jwt");
+
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
     body: JSON.stringify({
       name,
       imageUrl,
@@ -23,9 +31,38 @@ export const postItems = ({ name, imageUrl, weather }) => {
   }).then(processServerResponse);
 };
 
+export const likeClothingItem = (_id) => {
+  const jwt = localStorage.getItem("jwt");
+
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
+  }).then(processServerResponse);
+};
+
+export const dislikeClothingItem = (_id) => {
+  const jwt = localStorage.getItem("jwt");
+
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
+  }).then(processServerResponse);
+};
+
 export const deleteItems = (_id) => {
+  const jwt = localStorage.getItem("jwt");
+
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${jwt}`,
+    },
   }).then(processServerResponse);
 };

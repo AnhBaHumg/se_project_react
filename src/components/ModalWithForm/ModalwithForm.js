@@ -3,31 +3,27 @@ import React from "react";
 
 const ModalWithForm = ({
   children,
-  buttontext,
+  buttonText,
   title,
   onClose,
   name,
   isOpen,
   onSubmit,
+  isLoading,
 }) => {
-  
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal__content">
-        <button
-          className="modal__close"
-          type="button"
-          onClick={onClose}
-        />
-        <h3 className="modal__title">{title}</h3>
-        <form className="modal__form" onSubmit={onSubmit}>
+        <h1 className="modal__title">{title}</h1>
+        <button className="modal__close" type="button" onClick={onClose} />
+
+        <form className="modal__form" name={name} onSubmit={onSubmit}>
           {children}
-          <button
-            type="submit"
-            className="modal__button"
-          >
-            {buttontext}
-          </button>
+          <div>
+            <button type="submit" className="modal__button">
+              {isLoading ? "Saving..." : buttonText}
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -36,11 +36,10 @@
 }
 
 .modal__input {
-  height: 24px;
-  width: 440px;
   border: none;
   border-bottom: 1px solid #000;
-  margin-top: 8px;
+  width: 99%;
+  margin: 0 0 24px 0;
 }
 
 .modal__label {
@@ -187,4 +186,22 @@
   font-weight: 700;
   color: rgba(255, 77, 0, 1);
   cursor: pointer;
+  float: right;
+}
+
+.modal__input-title {
+  font-family: "CabinetGrotesk-Bold", Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0 0 8px 0;
+}
+
+.modal__login {
+  position: absolute;
+  bottom: 38px;
+  left: 165px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding: 0;
 }
