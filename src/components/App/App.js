@@ -28,6 +28,7 @@ import { login, update, register, checkToken } from "../../utils/auth.js";
 import LoginModal from "../LoginModal/LoginModal.js";
 import RegisterModal from "../RegisterModal/RegisterModal.js";
 import EditProfileModal from "../EditProfileModal/EditProfileModal.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -101,7 +102,7 @@ function App() {
     setIsLoading(true);
     postItems(values)
       .then((res) => {
-        setClothingItems([res, ...clothingItems]);
+        setClothingItems([res.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch((err) => {
@@ -287,7 +288,7 @@ function App() {
               loggedIn={loggedIn}
             />
           </Route>
-          <Route path="/profile" loggedIn={loggedIn}>
+          <ProtectedRoute path="/profile" loggedIn={loggedIn}>
             <Profile
               onSelectCard={handleSelectedCard}
               clothingItems={clothingItems}
@@ -297,7 +298,7 @@ function App() {
               editProfile={handleOpenEditModal}
               logout={logoutUser}
             />
-          </Route>
+          </ProtectedRoute>
         </Switch>
         <Footer />
         {activeModal === "create" && (

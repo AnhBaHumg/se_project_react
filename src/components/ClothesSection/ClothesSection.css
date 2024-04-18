@@ -1,14 +1,5 @@
 .clothing__section-cards {
-  justify-content: flex-start;
-  font-size: 20px;
-  line-height: 24px;
-  font-weight: 700;
-  color: black;
-  margin-top: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 21px 19px;
-  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  row-gap: 20px;
 }
 
 .clothes__section_button {
@@ -37,4 +28,13 @@
   font-weight: 700;
   color: black;
   font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+}
+
+.clothingcard{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 20px 0 20px;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
 }

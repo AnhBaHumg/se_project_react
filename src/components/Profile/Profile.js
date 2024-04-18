@@ -15,18 +15,22 @@ const Profile = ({
 }) => {
   return (
     <div className="profile">
-      <section className="profile__sidebar">
-        <SideBar editProfile={editProfile} logout={logout}></SideBar>
-      </section>
-      <section>
+      <SideBar editProfile={editProfile} logout={logout}></SideBar>
+      <div className="profile__clothing">
+        <div className="profile__clothing-header">
+          <p className="profile__clothing-title">Your Items</p>
+          <button className="profile__clothing-button" onClick={onClick}>
+            + Add New
+          </button>
+        </div>
         <ClothesSection
           onSelectCard={onSelectCard}
           onCreateModal={onCreateModal}
           onCardLike={onCardLike}
           loggedIn={loggedIn}
           clothingItems={clothingItems}
-        />
-      </section>
+        ></ClothesSection>
+      </div>
     </div>
   );
 };

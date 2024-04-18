@@ -7,6 +7,7 @@ import { useContext } from "react";
 
 function Main({
   weatherTemp,
+  weatherCondition,
   onSelectCard,
   clothingItems,
   handleOpenItemModal,
@@ -26,22 +27,24 @@ function Main({
     <main className="main">
       <WeatherCard
         day={false}
-        type="clearnight"
+        type={weatherCondition ? weatherCondition : "clear"}
         temperatureString={`${temp}°`}
       />
-      <section className="card_section" id="card-section">
+      <section className="main__section" id="card-section">
         Today is {`${temp}° ${currentTemperatureUnit}`} / You may want to wear:
         <div className="card_items">
-          {filteredCards.map((item) => (
-            <ItemCard
-              item={item}
-              onSelectCard={onSelectCard}
-              key={item._id}
-              handleOpenItemModal={handleOpenItemModal}
-              onCardLike={onCardLike}
-              loggedIn={loggedIn}
-            />
-          ))}
+          {filteredCards.map((item) => {
+            return (
+              <ItemCard
+                item={item}
+                onSelectCard={onSelectCard}
+                key={item._id}
+                handleOpenItemModal={handleOpenItemModal}
+                onCardLike={onCardLike}
+                loggedIn={loggedIn}
+              />
+            );
+          })}
         </div>
       </section>
     </main>

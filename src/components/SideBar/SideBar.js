@@ -11,8 +11,8 @@ const SideBar = ({ editProfile, logout }) => {
           className="sidebar__avatar-image"
           src={currentUser?.avatar}
           alt="Avatar Image"
-        />
-        <div className="sidebar__username">{currentUser?.name}</div>
+        ></img>
+        <p className="sidebar__username">{currentUser?.name}</p>
       </div>
       <div className="sidebar__user-options">
         <button className="sidebar__user-button" onClick={editProfile}>

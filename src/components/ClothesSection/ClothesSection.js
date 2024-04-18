@@ -12,18 +12,8 @@ const ClothesSection = ({
 }) => {
   const currentUser = useContext(CurrentUserContext);
   return (
-    <section className="clothes__section" id="clothes-section">
-      <div className="clothes__section_name-wrapper">
-        <p className="clothes__section_name">Your items</p>
-        <button
-          className="clothes__section_button"
-          type="text"
-          onClick={onCreateModal}
-        >
-          + Add New
-        </button>
-      </div>
-      <div className="clothing__section-cards">
+    <div className="clothing__section-cards">
+      <ul className="clothingcard">
         {clothingItems.map((item) => {
           const isOwn = item.owner === currentUser._id;
           if (isOwn) {
@@ -31,15 +21,16 @@ const ClothesSection = ({
               <ItemCard
                 item={item}
                 onSelectCard={onSelectCard}
-                key={item.id || item._id}
+                onCreateModal={onCreateModal}
+                key={item._id}
                 loggedIn={loggedIn}
                 onCardLike={onCardLike}
               />
             );
           } else return null;
         })}
-      </div>
-    </section>
+      </ul>
+    </div>
   );
 };
 

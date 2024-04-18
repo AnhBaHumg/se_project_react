@@ -15,7 +15,7 @@ const Header = ({ weatherCity, onCreateModal, loggedIn, register, login }) => {
 
   return (
     <header className="header">
-      <div className="header__logo">
+      <div className="header__avatar-logo">
         <div>
           <Link to="/">
             <img src={headerlogo} alt="logo" />

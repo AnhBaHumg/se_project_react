@@ -1,18 +1,25 @@
 .sidebar {
+  margin-right: 67px;
+}
+
+.sidebar__user-info-container {
   display: flex;
-  width: 232px;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  margin-bottom: 24px;
+}
+
+.sidebar__avatar-image {
+  width: 56px;
   height: 56px;
+  border-radius: 50%;
 }
 
 .sidebar__username {
-  display: flex;
-  align-items: center;
-  margin-left: 16px;
-  font-family: "CabinetGrotesk-Medium", Arial, sans-serif;
+  font-family: "CabinetGrotesk-Bold", Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 24.8px;
-  font-weight: 500;
-  color: black;
+  line-height: 25px;
 }
 
 .sidebar__user-options {
@@ -31,3 +38,4 @@
   cursor: pointer;
   padding: 0;
 }
+
