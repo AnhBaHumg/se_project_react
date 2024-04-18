@@ -205,3 +205,13 @@
   cursor: pointer;
   padding: 0;
 }
+
+.modal__register {
+  position: absolute;
+  bottom: 38px;
+  left: 165px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding: 0;
+}

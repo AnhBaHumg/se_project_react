@@ -4,8 +4,8 @@ export const APIkey = "2a0adacad2563681c1e9fa6ef98e236e";
 
 export const weatherOptions = [
   { url: require("../images/Day/Sunny.svg").default, day: true, type: "sunny" },
-  { url: require("../images/Day/Cloudy.svg").default.default, day: true, type: "cloudy" },
-  { url: require("../images/Day/Rainy.svg").default, type: true, type: "rainy" },
+  { url: require("../images/Day/Cloudy.svg").default, day: true, type: "cloudy" },
+  { url: require("../images/Day/Rainy.svg").default, day: true, type: "rainy" },
   { url: require("../images/Day/Snowy.svg").default, day: true, type: "snowy" },
   { url: require("../images/Day/Stormy.svg").default, day: true, type: "stormy" },  
   { url: require("../images/Day/Fogy.svg").default, day: true, type: "fogy" },

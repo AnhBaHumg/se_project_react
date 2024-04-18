@@ -19,7 +19,7 @@ const Profile = ({
       <div className="profile__clothing">
         <div className="profile__clothing-header">
           <p className="profile__clothing-title">Your Items</p>
-          <button className="profile__clothing-button" onClick={onClick}>
+          <button className="profile__clothing-button" onClick={onCreateModal}>
             + Add New
           </button>
         </div>
