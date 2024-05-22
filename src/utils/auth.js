@@ -1,7 +1,7 @@
 import { processServerResponse } from "./utils";
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwr.raspberryip.com"
+    ? "https://api.wtwr.pantech.vn"
     : "http://localhost:3001";
 const baseHeaders = { "Content-Type": "application/json" };
 
